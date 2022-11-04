@@ -3,3 +3,6 @@ dotnet ef migrations remove -p Infrastructure -s API
 
 https://localhost:7049/api/Products/id?id=2
 http://localhost:5092/images/products/sb-ang2.png
+https://localhost:7049/api/products?sort=priceDesc
+https://localhost:7049/api/products?sort=priceDesc&pageSize=7&pageIndex=2
+https://localhost:7049/api/products?search=blue&sort=priceDesc&pageSize=7&pageIndex=2
