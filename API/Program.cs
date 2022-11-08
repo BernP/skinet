@@ -38,14 +38,24 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
             return new BadRequestObjectResult(errorResponse);
         };
     });
+
+builder.Services.AddSwaggerGen();
+
+
 builder.Services.AddCors(opt =>
 {
-    opt.AddPolicy("CorsPolicy", policy =>
+    opt.AddPolicy(name: "CorsPolicy", policy =>
     {
-        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:7049");
+        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:7049",
+                                                             "http://localhost:5092",
+                                                             "http://localhost:7049",
+                                                             "http://localhost:5092",
+                                                             "https://localhost:4200");
     });
 });
-builder.Services.AddSwaggerGen();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,8 +65,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     
-   
 }
+
+
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 app.UseHttpsRedirection();

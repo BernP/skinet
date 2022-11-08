@@ -9,10 +9,12 @@ using API.DTO;
 using AutoMapper;
 using API.Errors;
 using API.Helpers;
+using Microsoft.AspNetCore.Cors;
 
 namespace API.Controllers
 {
     [ApiController]
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     public class ProductsController : BaseApiController
     {
@@ -30,6 +32,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+        [EnableCors("CorsPolicy")]
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
             [FromQuery] ProductSpecParams productParams)
@@ -42,6 +45,7 @@ namespace API.Controllers
             return Ok(new Pagination<ProductToReturnDto>(productParams.PageIndex, productParams.PageSize, totalItems, data));
         }
 
+        [EnableCors("CorsPolicy")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -56,6 +60,7 @@ namespace API.Controllers
             return  _mapper.Map<Product, ProductToReturnDto>(product);
         }
 
+        [EnableCors("CorsPolicy")]
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductsBrand()
         {
@@ -63,6 +68,7 @@ namespace API.Controllers
             return Ok(await _productBrandRepo.ListAllAsync());
         }
 
+        [EnableCors("CorsPolicy")]
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductsType()
         {
