@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IProduct } from 'src/app/models/product';
+import {RouterModule} from '@angular/router';
 
 
 @Component({
