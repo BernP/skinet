@@ -26,7 +26,7 @@ namespace API.Controllers
         [HttpGet("servererror")]
         public ActionResult GetServerError()
         {
-            return Ok();
+            return StatusCode(500);
         }
         [HttpGet("badrequest")]
         public ActionResult GetBadRequest()
