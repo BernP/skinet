@@ -1,0 +1,10 @@
+view --> redis-cli
+1) start redis --> redis-server (CMD)
+2) Open new terminal --> redis-cli
+3) ver chaves --> redis-cli KEYS '*' (lista as keys)
+3) Pegar valor --> redis-cli GET <keyvalue>
+
+- fechar redis:
+shutdown
+- sair do cli:
+quit
