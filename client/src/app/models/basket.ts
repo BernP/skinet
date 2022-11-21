@@ -14,6 +14,11 @@ import {v4 as uuidv4} from 'uuid';
         id: string;
         items: IBasketItem[];
     }
+    export interface IBasketTotals{
+        shipping: number;
+        subtotal: number;
+        total: number;
+    }
 
 
 
